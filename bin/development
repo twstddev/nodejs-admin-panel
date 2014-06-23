@@ -2,8 +2,10 @@
 
 var application = require( "../app/application" );
 var config = require( "../config/development" )[ "server" ];
+var morgan = require( "morgan" );
 
 application.set( "port", process.env.PORT || config.port )
+application.use( morgan() );
 
 var server = application.listen( application.get( "port" ), function() {
 	console.log( "Application server is started on port " + server.address().port );

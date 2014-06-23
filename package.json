@@ -23,6 +23,7 @@
   "dependencies": {
     "express": "^4.4.4",
     "mongoose": "^3.8.12",
+    "morgan": "^1.1.1",
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
