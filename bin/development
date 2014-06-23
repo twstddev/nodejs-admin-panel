@@ -3,9 +3,11 @@
 var application = require( "../app/application" );
 var config = require( "../config/development" )[ "server" ];
 var morgan = require( "morgan" );
+var errorhandler = require( "errorhandler" );
 
 application.set( "port", process.env.PORT || config.port )
 application.use( morgan() );
+application.use( errorhandler() );
 
 var server = application.listen( application.get( "port" ), function() {
 	console.log( "Application server is started on port " + server.address().port );
