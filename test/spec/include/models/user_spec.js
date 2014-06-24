@@ -1,5 +1,3 @@
-var expect = require( "chai" ).expect;
-
 describe( "User", function() {
 	it( "requires username", function() {
 	} );
