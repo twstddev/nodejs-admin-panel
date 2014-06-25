@@ -30,6 +30,8 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "mocha": "^1.20.1",
+    "mocha-mongoose": "^1.0.1",
+    "mongodb": "^1.4.7",
     "sinon": "^1.10.2",
     "sinon-chai": "^2.5.0"
   }
