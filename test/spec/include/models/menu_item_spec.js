@@ -48,8 +48,33 @@ describe( "MenuItem", function() {
 	} );
 
 	it( "allows tree structure", function( done ) {
-		// TODO
-		done();
+		var parent_item = null;
+
+		var new_item_created = function( error, menu_item ) {
+			expect( menu_item.parent.toString() ).to.eq( parent_item._id.toString() );
+
+			parent_item.getChildren( function( error, menu_items ) {
+				expect( menu_items.length ).to.eq( 1 );
+				expect( menu_items[ 0 ].parent.toString() ).to.eq( parent_item._id.toString() );
+
+				done();
+			} );
+		};
+
+		var main_item_created = function( error, menu_item ) {
+			parent_item = menu_item;
+
+			var new_menu_item = new MenuItem( {
+				title : "About",
+				url : "about"
+			} );
+
+			new_menu_item.parent = menu_item;
+
+			new_menu_item.save( new_item_created );
+		};
+
+		MenuItem.create( menu_item_data, main_item_created );
 	} );
 
 	afterEach( function( done ) {
