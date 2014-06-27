@@ -9,6 +9,7 @@ var helpers = require( "./include/helpers" );
 
 var application = express();
 
+application.use( express.static( helpers.generate_public_path( "public" ) ) );
 application.use( favicon() );
 
 application.set( "views", helpers.generate_public_path( "public/views" ) );

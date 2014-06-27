@@ -19,22 +19,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="vendorlibs/bootstrap/bootstrap.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
 		
 		<title>
 			Express.js admin panel
 		</title>
 
 		<!-- build:js js/header.js -->
-		<script type="text/javascript" src="vendorlibs/jquery/jquery.js"></script>
-		<script type="text/javascript" src="vendorlibs/jquery-migrate/jquery-migrate.js"></script>
-		<script type="text/javascript" src="vendorlibs/modernizr/modernizr.js"></script>
-		<script type="text/javascript" src="vendorlibs/bootstrap/bootstrap.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate.js"></script>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<!-- endbuild -->
 
 		<!--[if (gte IE 6)&(lte IE 8)]>
 			<!-- build:js js/conditional.js -->
-			<script type="text/javascript" src="vendorlibs/selectivizr/selectivizr.js"></script>
+			<script type="text/javascript" src="js/selectivizr.js"></script>
 			<!-- endbuild -->
 		<![endif]-->
 	</head>

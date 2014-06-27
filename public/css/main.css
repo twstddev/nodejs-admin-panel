@@ -1,0 +1,22 @@
+html{font-size:12px}.grid-l-1{float:left;width:8.33333%}.grid-l-2{float:left;width:16.66667%}.grid-l-3{float:left;width:25%}.grid-l-4{float:left;width:33.33333%}.grid-l-5{float:left;width:41.66667%}.grid-l-6{float:left;width:50%}.grid-l-7{float:left;width:58.33333%}.grid-l-8{float:left;width:66.66667%}.grid-l-9{float:left;width:75%}.grid-l-10{float:left;width:83.33333%}.grid-l-11{float:left;width:91.66667%}.grid-l-12{float:left;width:100%}@media only screen and (max-width:480px){.grid-s-1{float:left;width:8.33333%}.grid-s-2{float:left;width:16.66667%}.grid-s-3{float:left;width:25%}.grid-s-4{float:left;width:33.33333%}.grid-s-5{float:left;width:41.66667%}.grid-s-6{float:left;width:50%}.grid-s-7{float:left;width:58.33333%}.grid-s-8{float:left;width:66.66667%}.grid-s-9{float:left;width:75%}.grid-s-10{float:left;width:83.33333%}.grid-s-11{float:left;width:91.66667%}.grid-s-12{float:left;width:100%}}@media only screen and (min-width:481px) and (max-width:768px){.grid-t-1{float:left;width:8.33333%}.grid-t-2{float:left;width:16.66667%}.grid-t-3{float:left;width:25%}.grid-t-4{float:left;width:33.33333%}.grid-t-5{float:left;width:41.66667%}.grid-t-6{float:left;width:50%}.grid-t-7{float:left;width:58.33333%}.grid-t-8{float:left;width:66.66667%}.grid-t-9{float:left;width:75%}.grid-t-10{float:left;width:83.33333%}.grid-t-11{float:left;width:91.66667%}.grid-t-12{float:left;width:100%}}@media only screen and (min-width:769px) and (max-width:1024px){.grid-m-1{float:left;width:8.33333%}.grid-m-2{float:left;width:16.66667%}.grid-m-3{float:left;width:25%}.grid-m-4{float:left;width:33.33333%}.grid-m-5{float:left;width:41.66667%}.grid-m-6{float:left;width:50%}.grid-m-7{float:left;width:58.33333%}.grid-m-8{float:left;width:66.66667%}.grid-m-9{float:left;width:75%}.grid-m-10{float:left;width:83.33333%}.grid-m-11{float:left;width:91.66667%}.grid-m-12{float:left;width:100%}}.general-page{padding:100px 0}.login-form{margin:0 auto;width:400px}.search-form{width:200px}.admin-panel h4{margin-top:7px;margin-bottom:7px;margin-right:1em}.admin-table .actions{width:200px}.admin-pills ul{padding-left:2em}.admin-model-form .thumbnail{text-align:center}.navbar-nav .username-dropdown>a{padding-top:6px;padding-bottom:6px}.username-dropdown .username-image{height:36px;border:1px solid #fff;margin-right:1em}.admin-sidebar{position:fixed;left:0;top:50px;width:200px;bottom:0;background:#f7f7f7;border-right:1px solid #ddd}.admin-sidebar .list-group-item{border-right:0;-webkit-border-radius:0!important;-moz-border-radius:0!important;-ms-border-radius:0!important;-o-border-radius:0!important;border-radius:0!important}.main-admin-page{padding:80px 40px 40px 240px}html{height:100%}body{min-height:100%}
+
+.admin-table .actions a {
+	float: left;
+	margin-right: 1em;
+}
+
+.admin-panel .bg-info {
+	position: relative;
+}
+
+.admin-panel .bg-info form button {
+	display: inline-block;
+	float: right;
+	position: absolute;
+	top: 10px;
+	right: 15px;
+}
+
+.file-window .modal-dialog {
+	width: 80%;
+}
