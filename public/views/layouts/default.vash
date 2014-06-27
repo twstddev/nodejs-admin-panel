@@ -18,28 +18,28 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/bootstrap.css" />
 		
 		<title>
 			Express.js admin panel
 		</title>
 
 		<!-- build:js js/header.js -->
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery-migrate.js"></script>
-		<script type="text/javascript" src="js/modernizr.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/jquery-migrate.js"></script>
+		<script type="text/javascript" src="/js/modernizr.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
 		<!-- endbuild -->
 
 		<!--[if (gte IE 6)&(lte IE 8)]>
 			<!-- build:js js/conditional.js -->
-			<script type="text/javascript" src="js/selectivizr.js"></script>
+			<script type="text/javascript" src="/js/selectivizr.js"></script>
 			<!-- endbuild -->
 		<![endif]-->
 	</head>
 	<body>
-		@html.block( "main", function( model ) {} )
-		<script type="text/javascript" src="js/main.js"></script>
+		@html.block( "main" )
+		<script type="text/javascript" src="/js/main.js"></script>
 	</body>
 </html>

@@ -51,7 +51,7 @@
 			</ul>
 		</aside>
 		<section class="main-admin-page">
-			@html.block( "content", function( model ) {} )
+			@html.block( "content" )
 		</section>
 	} )
 } )
