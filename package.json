@@ -23,6 +23,7 @@
   "dependencies": {
     "errorhandler": "^1.1.1",
     "express": "^4.4.4",
+    "express-namespace": "^0.1.1",
     "lodash": "^2.4.1",
     "mongoose": "^3.8.12",
     "mongoose-tree": "^0.2.2",
