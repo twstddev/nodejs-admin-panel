@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  
+<html class="ie ie6 lte8 lte7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte8 lte7" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte8" lang="en">
+<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="vendorlibs/bootstrap/bootstrap.css" />
+		
+		<title>
+			Express.js admin panel
+		</title>
+
+		<!-- build:js js/header.js -->
+		<script type="text/javascript" src="vendorlibs/jquery/jquery.js"></script>
+		<script type="text/javascript" src="vendorlibs/jquery-migrate/jquery-migrate.js"></script>
+		<script type="text/javascript" src="vendorlibs/modernizr/modernizr.js"></script>
+		<script type="text/javascript" src="vendorlibs/bootstrap/bootstrap.js"></script>
+		<!-- endbuild -->
+
+		<!--[if (gte IE 6)&(lte IE 8)]>
+			<!-- build:js js/conditional.js -->
+			<script type="text/javascript" src="vendorlibs/selectivizr/selectivizr.js"></script>
+			<!-- endbuild -->
+		<![endif]-->
+	</head>
+	<body>
+		@html.block( "main", function( model ) {} )
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

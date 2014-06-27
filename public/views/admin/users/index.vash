@@ -1,0 +1,3 @@
+@html.extend( "layouts/admin", function( model ) {
+	@html.block( "main", function( model ) {} )
+} )

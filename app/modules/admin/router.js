@@ -13,6 +13,7 @@ var Router = ( function() {
 		registerRoutes : function( application ) {
 			application.namespace( "/admin", function() {
 				application.get( "/", function( request, response ) {
+					response.render( "admin/users/index", {} );
 				} );
 			} );
 		}
