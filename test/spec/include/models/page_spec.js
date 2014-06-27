@@ -52,8 +52,10 @@ describe( "Page", function() {
 
 	it( "requires slug to be unique", function( done ) {
 		var main_page_created = function( error, page ) {
+			var initial_page = page;
+
 			Page.create( page_data, function( error, page ) {
-				expect( error ).not.to.be.null;
+				expect( page.slug ).not.to.eq( initial_page.slug );
 
 				done();
 			} );
@@ -79,7 +81,7 @@ describe( "Page", function() {
 
 		Page.create( page_data, function( error, page ) {
 			Page.findOne( { "_id" : page._id }, function( error, page ) {
-				expect( page.meta ).to.eq( meta_data );
+				expect( page.meta ).to.deep.equal( meta_data );
 
 				done();
 			} );
@@ -87,9 +89,9 @@ describe( "Page", function() {
 	} );
 
 	it( "validates passed template", function( done ) {
-		page_data.template = "none";
+		page_data.template = "gallery";
 
-		Page.create( function( error, page ) {
+		Page.create( page_data, function( error, page ) {
 			expect( error ).not.to.be.null;
 
 			done();
