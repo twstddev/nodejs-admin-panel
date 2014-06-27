@@ -5,10 +5,14 @@
 var express = require( "express" );
 var favicon = require( "./modules/favicon/main" );
 var router = require( "./src/router.js" );
+var helpers = require( "./include/helpers" );
 
 var application = express();
 
 application.use( favicon() );
+
+application.set( "views", helpers.generate_public_path( "public/views" ) );
+application.set( "view engine", "vash" );
 
 router.registerRoutes( application );
 

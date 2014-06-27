@@ -31,7 +31,8 @@
     "monguurl": "^0.1.0",
     "morgan": "^1.1.1",
     "node-uuid": "^1.4.1",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "vash": "^0.7.12-1"
   },
   "devDependencies": {
     "chai": "^1.9.1",
