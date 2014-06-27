@@ -5,9 +5,11 @@ describe( "User", function() {
 	var User = mongoose.model( "User" );
 	var user_data = {};
 
-	beforeEach( function( done ) {
+	before( function( done ) {
 		connect_to_database( done );
+	} );
 
+	beforeEach( function() {
 		user_data = {
 			username : "admin",
 			email : "admin@admin.com",
@@ -35,6 +37,7 @@ describe( "User", function() {
 			done();
 		} );
 	} );
+
 
 	it( "requires username to be unique", function( done ) {
 		User.create( user_data, function() {
@@ -108,7 +111,6 @@ describe( "User", function() {
 
 			done();
 		} );
-
 	} );
 
 	afterEach( function( done ) {
