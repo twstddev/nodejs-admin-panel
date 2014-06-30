@@ -2,13 +2,13 @@ extends ../../layouts/admin
 
 block content
 	p.alert.alert-success.alert-dismissable
-		button.close( type="button" data-dismiss="true" aria-hidden="true" ) &times;
+		button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
 		|A new user has been added
 
 	section.admin-panel.panel.panel-default
 		.panel-heading
 			h4.pull-left Users
-			a.btn.btn-success.pull-left( href="#" )
+			a.btn.btn-success.pull-left( href="/admin/users/new" )
 				i.glyphicon.glyphicon-file
 				|&nbsp;Add new
 

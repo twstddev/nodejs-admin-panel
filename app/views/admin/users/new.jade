@@ -1,0 +1,55 @@
+extends ../../layouts/admin
+
+block content
+	p.alert.alert-success.alert-dismissable
+		button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
+		|User has been updated
+
+	form.admin-model-form
+		.container-fluid
+			.row
+				.col-lg-9
+					h3 Admin
+					.form-group
+						label( for="email" ) Email:
+						input#email.form-control( type="email" value="admin@admin.admin" placeholder="Enter email..." )
+
+					.form-group
+						label( for="password" ) Password:
+						input#password.form-control( type="password" placeholder="Enter password..." )
+
+					.form-group
+						label( for="confirm-password" ) Confirm password:
+						input#confirm-password.form-control( type="password" placeholder="Confirm password..." )
+					h3 Profile
+					.form-group
+						label( for="first-name" ) First name:
+						input#first-name.form-control( type="text" value="Admin" )
+					
+					.form-group
+						label( for="last-name" ) Last name:
+						input#last-name.form-control( type="text" value="Admin" )
+
+				aside.col-lg-3
+					.panel.panel-default
+						.panel-heading Additional
+						.panel-body
+							.thumbnail
+								img.img-thumbnail( src="http://placehold.it/200x300" )
+							.form-group
+								label( for="group" ) Group:
+								select#group.form-control( name="" )
+									option( value="" ) Admin
+									option( value="" ) Editor
+
+							button.btn.btn-success.btn-block( type="submit" )
+								i.glyphicon.glyphicon.remove
+								|&nbsp;Update
+							button.btn.btn-warning.btn-block( type="submit" )
+								i.glyphicon.glyphicon-remove
+								|&nbsp;Cancel
+							button.btn.btn-danger.btn-block( type="submi" )
+								i.glyphicon.glyphicon-trash
+								|&nbsp;Delete
+						
+
