@@ -1,1 +1,56 @@
 extends ../../layouts/admin
+
+block content
+	p.alert.alert-success.alert-dismissable
+		button.close( type="button" data-dismiss="true" aria-hidden="true" ) &times;
+		|A new user has been added
+
+	section.admin-panel.panel.panel-default
+		.panel-heading
+			h4.pull-left Users
+			a.btn.btn-success.pull-left( href="#" )
+				i.glyphicon.glyphicon-file
+				|&nbsp;Add new
+
+			form.search-form.input-group.pull-right( action="#" )
+				input.search-input.form-control( type="text" placeholder="Search..." )
+				span.input-group-btn
+					button.btn.btn-primary( type="submit" )
+						i.glyphicon.glyphicon-search
+
+			.clearfix
+
+	table.table.table-striped.table-hover.admin-table
+		thead
+			tr
+				th Username
+				th Email
+				th Group
+				th.actions Actions
+		tbody
+			tr
+				td
+					a( href="#" ) Admin
+				td admin@admin.admin
+				td admin
+				td
+					a.btn.btn-xs.btn-warning( href="#" )
+						i.glyphicon.glyphicon-pencil
+						|&nbsp;Edit
+					|&nbsp;
+					a.btn.btn-xs.btn-danger( href="#" )
+						i.glyphicon.glyphicon-trash
+						|&nbsp;Delete
+			tr
+				td
+					a( href="#" ) Editor
+				td editor@editor.editor
+				td editor
+				td
+					a.btn.btn-xs.btn-warning( href="#" )
+						i.glyphicon.glyphicon-pencil
+						|&nbsp;Edit
+					|&nbsp;
+					a.btn.btn-xs.btn-danger( href="#" )
+						i.glyphicon.glyphicon-trash
+						|&nbsp;Delete

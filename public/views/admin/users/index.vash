@@ -1,5 +1,0 @@
-@html.extend( "layouts/admin", function( model ) {
-	@html.block( "content", function( model ) {
-		<h1>here</h1>
-	} )
-} )
