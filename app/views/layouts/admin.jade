@@ -1,0 +1,41 @@
+extends default
+
+block main
+	header
+		nav.navbar.navbar-inverse.navbar-fixed-top( role="navigation" )
+			.container-fluid
+				.navbar-header
+					a.navbar-brand( href="#" ) 
+						|Website
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav.navbar-right
+						li.dropdown.username-dropdown
+							a.dropdown-toggle( href="#" data-toggle="dropdown" )
+								img.username-image( src="http://placehold.it/40x40" alt="Username" )
+							ul.dropdown-menu
+								li
+									a( href="#" )
+										i.glyphicon.glyphicon-user
+										|&nbsp;My Profile
+								li
+									a( href="#" )
+										i.glyphicon.glyphicon-off
+										|&nbsp;Log Out
+
+	aside.admin-sidebar
+		ul.list-group
+			li
+				a.list-group-item( href="/admin/pages" )
+					i.glyphicon.glyphicon-folder-close
+					|&nbsp;Pages
+			li
+				a.list-group-item( href="/admin/menu_items" )
+					i.glyphicon.glyphicon-tasks
+					|&nbsp;Menu
+			li
+				a.list-group-item( href="/admin/users" )
+					i.glyphicon.glyphicon-user
+					|&nbsp;Users
+	
+	section.mainh-admin-page
+		block content

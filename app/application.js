@@ -12,8 +12,8 @@ var application = express();
 application.use( express.static( helpers.generate_public_path( "public" ) ) );
 application.use( favicon() );
 
-application.set( "views", helpers.generate_public_path( "public/views" ) );
-application.set( "view engine", "vash" );
+application.set( "views", helpers.generate_public_path( "app/views" ) );
+application.set( "view engine", "jade" );
 
 router.registerRoutes( application );
 
