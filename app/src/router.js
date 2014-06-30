@@ -1,5 +1,3 @@
-var helpers = require( "../include/helpers" );
-
 var admin_router = require( helpers.generate_public_path( "app/modules/admin/router" ) );
 
 /**
