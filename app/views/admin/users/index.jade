@@ -37,7 +37,8 @@ block content
 						a.btn.btn-xs.btn-warning( href="/admin/users/" + user.id + "/edit" )
 							i.glyphicon.glyphicon-pencil
 							|&nbsp;Edit
-						form( action="/admin/users/" + user.id + "?_method=DELETE" method="POST" )
+						form( action="/admin/users/" + user.id method="POST" )
+							input( type="hidden" name="_method" value="DELETE" )
 							button.btn.btn-xs.btn-danger( type="submit" )
 								i.glyphicon.glyphicon-trash
 								|&nbsp;Delete

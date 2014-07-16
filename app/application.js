@@ -3,6 +3,7 @@
  * application instance.
  */
 global.helpers = require( "./include/helpers" );
+global._ = require( "lodash" );
 var express = require( "express" );
 var body_parser = require( "body-parser" );
 var favicon = require( "./modules/favicon/main" );
@@ -11,6 +12,7 @@ var flash = require( "connect-flash" );
 var cookie_parser = require( "cookie-parser" );
 var session = require( "express-session" );
 var method_override = require( "method-override" );
+var custom_method_override = require( "./include/middlewares/methodoverride" );
 
 var application = express();
 
@@ -21,7 +23,7 @@ application.use( session( {
 application.use( flash() );
 application.use( express.static( helpers.generate_public_path( "public" ) ) );
 application.use( body_parser() );
-application.use( method_override( "_method" ) );
+application.use( method_override( custom_method_override ) );
 application.use( favicon() );
 
 application.set( "views", helpers.generate_public_path( "app/views" ) );
