@@ -8,11 +8,20 @@ var body_parser = require( "body-parser" );
 var favicon = require( "./modules/favicon/main" );
 var router = require( "./src/router.js" );
 var flash = require( "connect-flash" );
+var cookie_parser = require( "cookie-parser" );
+var session = require( "express-session" );
+var method_override = require( "method-override" );
 
 var application = express();
 
+application.use( cookie_parser( "a super secret goes here" ) );
+application.use( session( {
+	secret : "another secret goes here"
+} ) );
+application.use( flash() );
 application.use( express.static( helpers.generate_public_path( "public" ) ) );
 application.use( body_parser() );
+application.use( method_override( "_method" ) );
 application.use( favicon() );
 
 application.set( "views", helpers.generate_public_path( "app/views" ) );

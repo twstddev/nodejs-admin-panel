@@ -1,9 +1,10 @@
 extends ../../layouts/admin
 
 block content
-	p.alert.alert-success.alert-dismissable
-		button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
-		|A new user has been added
+	if success.length
+		p.alert.alert-success.alert-dismissable
+			button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
+			|#{success}
 
 	section.admin-panel.panel.panel-default
 		.panel-heading
@@ -25,32 +26,18 @@ block content
 			tr
 				th Username
 				th Email
-				th Group
 				th.actions Actions
 		tbody
-			tr
-				td
-					a( href="#" ) Admin
-				td admin@admin.admin
-				td admin
-				td
-					a.btn.btn-xs.btn-warning( href="#" )
-						i.glyphicon.glyphicon-pencil
-						|&nbsp;Edit
-					|&nbsp;
-					a.btn.btn-xs.btn-danger( href="#" )
-						i.glyphicon.glyphicon-trash
-						|&nbsp;Delete
-			tr
-				td
-					a( href="#" ) Editor
-				td editor@editor.editor
-				td editor
-				td
-					a.btn.btn-xs.btn-warning( href="#" )
-						i.glyphicon.glyphicon-pencil
-						|&nbsp;Edit
-					|&nbsp;
-					a.btn.btn-xs.btn-danger( href="#" )
-						i.glyphicon.glyphicon-trash
-						|&nbsp;Delete
+			each user in users
+				tr
+					td
+						a( href="/admin/users/" + user.id + "/edit" ) #{user.username}
+					td #{user.email}
+					td.actions
+						a.btn.btn-xs.btn-warning( href="/admin/users/" + user.id + "/edit" )
+							i.glyphicon.glyphicon-pencil
+							|&nbsp;Edit
+						form( action="/admin/users/" + user.id + "?_method=DELETE" method="POST" )
+							button.btn.btn-xs.btn-danger( type="submit" )
+								i.glyphicon.glyphicon-trash
+								|&nbsp;Delete

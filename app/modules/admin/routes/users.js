@@ -4,7 +4,13 @@ var User = require( helpers.generate_public_path( "app/include/models/user" ) );
  * @brief Displays a list of users.
  */
 module.exports.index = function( request, response ) {
-	response.render( "admin/users/index" );
+	User.find( {} )
+	.exec( function( errors, users ) {
+		return response.render( "admin/users/index", {
+			users : users,
+			success : request.flash( "success" )
+		} );
+	} );
 };
 
 /**
@@ -38,7 +44,8 @@ module.exports.create = function( request, response ) {
 		}
 
 		if ( !error ) {
-			return response.redirect( "admin/users" );
+			request.flash( "success", "A user has been created" );
+			return response.redirect( "/admin/users" );
 		}
 
 		return response.render( "admin/users/new", {
@@ -47,3 +54,27 @@ module.exports.create = function( request, response ) {
 		} );
 	} );
 }
+
+/**
+ * @brief Redirects to edit form since we don't have
+ * users preview.
+ */
+module.exports.show = function( request, response ) {
+	response.redirect( "/admin/users/" + request.params.user + "/edit" );
+};
+
+/**
+ * @brief Update given user.
+ */
+module.exports.update = function( request, response ) {
+};
+
+/**
+ * @brief Removes requested user.
+ */
+module.exports.destroy = function( request, response ) {
+	User.remove( { _id : request.params.user }, function( error ) {
+		request.flash( "success", "A user has been deleted" );
+		return response.redirect( "/admin/users" );
+	} );
+};
