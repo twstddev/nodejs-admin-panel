@@ -22,6 +22,7 @@
   "homepage": "https://github.com/twstddev/nodejs-admin-panel",
   "dependencies": {
     "body-parser": "^1.4.3",
+    "connect-flash": "^0.1.1",
     "errorhandler": "^1.1.1",
     "express": "^4.4.4",
     "express-namespace": "^0.1.1",

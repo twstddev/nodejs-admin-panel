@@ -25,8 +25,25 @@ module.exports.create = function( request, response ) {
 	var new_user = new User( request.body );
 
 	new_user.save( function( error ) {
-		if ( error ) {
+		error = error || {};
+
+		if ( request.body[ "password" ] != request.body[ "confirm-password" ] ) {
+			error = {
+				errors : {
+					password : {
+						message : "Password do not match"
+					}
+				}
+			};
 		}
-		response.send( error );
+
+		if ( !error ) {
+			return response.redirect( "admin/users" );
+		}
+
+		return response.render( "admin/users/new", {
+			user : new_user,
+			errors : helpers.process_errors( error.errors )
+		} );
 	} );
 }

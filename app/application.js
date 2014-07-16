@@ -7,6 +7,7 @@ var express = require( "express" );
 var body_parser = require( "body-parser" );
 var favicon = require( "./modules/favicon/main" );
 var router = require( "./src/router.js" );
+var flash = require( "connect-flash" );
 
 var application = express();
 

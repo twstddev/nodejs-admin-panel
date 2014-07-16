@@ -1,6 +1,8 @@
-p.alert.alert-success.alert-dismissable
-	button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
-	|User has been updated
+if errors
+	each error in errors
+		p.alert.alert-danger.alert-dismissable
+			button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
+			|#{error}
 
 form.admin-model-form( action=form_url method="POST" )
 	if form_method
@@ -10,10 +12,10 @@ form.admin-model-form( action=form_url method="POST" )
 			.col-lg-9
 				.form-group
 					label( for="username" ) Username:
-					input#username.form-control.input-lg( type="text" value="Admin" placeholder="Enter username" name="username" )
+					input#username.form-control.input-lg( type="text" value=user.username placeholder="Enter username" name="username" )
 				.form-group
 					label( for="email" ) Email:
-					input#email.form-control( type="email" value="admin@admin.admin" placeholder="Enter email..." name="email" )
+					input#email.form-control( type="email" value=user.email placeholder="Enter email..." name="email" )
 
 				.form-group
 					label( for="password" ) Password:
@@ -25,11 +27,11 @@ form.admin-model-form( action=form_url method="POST" )
 				h3 Profile
 				.form-group
 					label( for="first-name" ) First name:
-					input#first-name.form-control( type="text" value="Admin" name="first-name" )
+					input#first-name.form-control( type="text" value=user.first_name name="first-name" )
 				
 				.form-group
 					label( for="last-name" ) Last name:
-					input#last-name.form-control( type="text" value="Admin" name="last-name" )
+					input#last-name.form-control( type="text" value=user.last_name name="last-name" )
 
 			aside.col-lg-3
 				.panel.panel-default
