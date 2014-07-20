@@ -1,0 +1,6 @@
+extends ../../layouts/admin
+
+block content
+	- var form_url = "/admin/menu_items/" + menu_item.id
+	- var form_method = "PUT"
+	include form

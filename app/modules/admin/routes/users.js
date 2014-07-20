@@ -46,7 +46,7 @@ module.exports.index = function( request, response ) {
 module.exports.new = function( request, response ) {
 	var user = new User( {} );
 
-	response.render( "admin/users/new", {
+	return response.render( "admin/users/new", {
 		user : user
 	} );
 }
@@ -93,7 +93,7 @@ module.exports.create = function( request, response ) {
  * users preview.
  */
 module.exports.show = function( request, response ) {
-	response.redirect( "/admin/users/" + request.params.user + "/edit" );
+	return response.redirect( "/admin/users/" + request.params.user + "/edit" );
 };
 
 /**
@@ -105,9 +105,9 @@ module.exports.edit = function( request, response ) {
 		},
 		function( error, user ) {
 
-		response.render( "admin/users/edit", {
-			user : user
-		} );
+			return response.render( "admin/users/edit", {
+				user : user
+			} );
 	} );
 };
 

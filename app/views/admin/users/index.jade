@@ -1,7 +1,7 @@
 extends ../../layouts/admin
 
 block content
-	if success.length
+	if success && success.length
 		p.alert.alert-success.alert-dismissable
 			button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
 			|#{success}
@@ -22,17 +22,18 @@ block content
 				th Email
 				th.actions Actions
 		tbody
-			each user in users
-				tr
-					td
-						a( href="/admin/users/" + user.id + "/edit" ) #{user.username}
-					td #{user.email}
-					td.actions
-						a.btn.btn-xs.btn-warning( href="/admin/users/" + user.id + "/edit" )
-							i.glyphicon.glyphicon-pencil
-							|&nbsp;Edit
-						form( action="/admin/users/" + user.id method="POST" )
-							input( type="hidden" name="_method" value="DELETE" )
-							button.btn.btn-xs.btn-danger( type="submit" )
-								i.glyphicon.glyphicon-trash
-								|&nbsp;Delete
+			if users
+				each user in users
+					tr
+						td
+							a( href="/admin/users/" + user.id + "/edit" ) #{user.username}
+						td #{user.email}
+						td.actions
+							a.btn.btn-xs.btn-warning( href="/admin/users/" + user.id + "/edit" )
+								i.glyphicon.glyphicon-pencil
+								|&nbsp;Edit
+							form( action="/admin/users/" + user.id method="POST" )
+								input( type="hidden" name="_method" value="DELETE" )
+								button.btn.btn-xs.btn-danger( type="submit" )
+									i.glyphicon.glyphicon-trash
+									|&nbsp;Delete
