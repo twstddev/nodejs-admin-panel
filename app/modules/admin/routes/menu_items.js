@@ -88,3 +88,13 @@ module.exports.update = function( request, response ) {
 		}
 	} );
 };
+
+/**
+ * @brief Removes requested menu item.
+ */
+module.exports.destroy = function( request, response ) {
+	MenuItem.remove( { _id : request.params.menu_item }, function( error ) {
+		request.flash( "success", "A menu item has been deleted" );
+		return response.redirect( "/admin/menu_items" );
+	} );
+};
