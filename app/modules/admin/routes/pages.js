@@ -88,3 +88,13 @@ module.exports.update = function( request, response ) {
 		}
 	} );
 };
+
+/**
+ * @brief Removes requested page.
+ */
+module.exports.destroy = function( request, response ) {
+	Page.remove( { _id : request.params.page }, function( error ) {
+		request.flash( "success", "A page has been deleted" );
+		return response.redirect( "/admin/pages" );
+	} );
+};
