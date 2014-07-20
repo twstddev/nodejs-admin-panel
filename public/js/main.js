@@ -14,8 +14,15 @@
 
 				$this.find( "ul" ).addClass( "nav nav-pill nav-stacked" );
 
-				$.post( $this.data( "update-url" ), { 
-					items : $this.nestedSortable( "toHierarchy", { startDepthCount : 0 } ) 
+				$.ajax( {
+					url : $this.data( "update-url" ),
+					data : {
+						items : $this.nestedSortable( "toHierarchy", { startDepthCount : 0 } )
+					},
+					type : "POST",
+					headers : {
+						"x-csrf-token" : $( "meta[name=csrf]" ).attr( "content" )
+					}
 				} );
 			}
 		} );

@@ -12,7 +12,9 @@ var flash = require( "connect-flash" );
 var cookie_parser = require( "cookie-parser" );
 var session = require( "express-session" );
 var method_override = require( "method-override" );
+var csrf = require( "csurf" );
 var custom_method_override = require( "./include/middlewares/methodoverride" );
+var csrf_inject = require( "./include/middlewares/csrfinject" );
 
 var application = express();
 
@@ -24,6 +26,9 @@ application.use( flash() );
 application.use( express.static( helpers.generate_public_path( "public" ) ) );
 application.use( body_parser() );
 application.use( method_override( custom_method_override ) );
+application.use( csrf() );
+application.use( csrf_inject );
+
 application.use( favicon() );
 
 application.set( "views", helpers.generate_public_path( "app/views" ) );

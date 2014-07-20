@@ -5,6 +5,7 @@ each menu_item in menu_items
 			|&nbsp;#{menu_item.title}
 		form( action="/admin/menu_items/" + menu_item.id method="POST" )
 			input( type="hidden" name="_method" value="DELETE" )
+			input( type="hidden" name="_csrf" value=csrf_token )
 			button.btn.btn-xs.btn-danger( type="submit" )
 				i.glyphicon.glyphicon-trash
 				|&nbsp;Delete

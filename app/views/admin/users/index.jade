@@ -34,6 +34,7 @@ block content
 								|&nbsp;Edit
 							form( action="/admin/users/" + user.id method="POST" )
 								input( type="hidden" name="_method" value="DELETE" )
+								input( type="hidden" name="_csrf" value=csrf_token )
 								button.btn.btn-xs.btn-danger( type="submit" )
 									i.glyphicon.glyphicon-trash
 									|&nbsp;Delete
