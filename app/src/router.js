@@ -1,5 +1,6 @@
 var admin_router = require( helpers.generate_public_path( "app/modules/admin/router" ) );
 var session_router = require( helpers.generate_public_path( "app/modules/authentication/router" ) );
+var api_router = require( helpers.generate_public_path( "app/modules/api/router" ) );
 
 /**
  * @brief Implements entry point for all application routes.
@@ -21,6 +22,13 @@ var Router = ( function() {
 		session_router.registerRoutes( application );
 	};
 
+	/**
+	 * @brief Registers JSON api routes.
+	 */
+	var regiterApiRouter = function( application ) {
+		api_router.registerRoutes( application );
+	};
+
 	return {
 		/**
 		 * @brief Fake constructor.
@@ -35,6 +43,7 @@ var Router = ( function() {
 		registerRoutes : function( application ) {
 			registerAdminRoutes( application );
 			registerSessionRouter( application );
+			regiterApiRouter( application );
 		}
 	}
 } )();

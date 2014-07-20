@@ -19,6 +19,9 @@ var Router = ( function() {
 	};
 
 	return {
+		/**
+		 * @brief Registers session routes.
+		 */
 		registerRoutes : function( application ) {
 			application.get( "/login", getLoginRoute );
 			application.get( "/logout", getLogoutRoute );
