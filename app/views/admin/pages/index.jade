@@ -1,0 +1,41 @@
+extends ../../layouts/admin
+
+block content
+	if success && success.length
+		p.alert.alert-success.alert-dismissable
+			button.close( type="button" data-dismiss="alert" aria-hidden="true" ) &times;
+			|#{success}
+
+	section.admin-panel.panel.panel-default
+		.panel-heading
+			h4.pull-left Pages
+			a.btn.btn-success.pull-left( href="/admin/pages/new" )
+				i.glyphicon.glyphicon-file
+				|&nbsp;Add new
+
+			.clearfix
+
+	table.table.table-striped.table-hover.admin-table
+		thead
+			tr
+				th Page title
+				th Page slug
+				th.actions Actions
+
+		tbody
+			if pages
+				each page in pages
+					tr
+						td
+							a( href="/admin/pages/" + page.id + "/edit" ) #{page.title}
+						td #{page.slug}
+						td.actions
+							a.btn.btn-xs.btn-warning( href="/admin/pages/" + page.id + "/edit" )
+								i.glyphicon.glyphicon-pencil
+								|&nbsp;Edit
+							form( action="/admin/pages/" + page.id method="POST" )
+								input( type="hidden" name="_method" value="DELETE" )
+								button.btn.btn-xs.btn-danger( type="submit" )
+									i.glyphicon.glyphicon-trash
+									|&nbsp;Delete
+

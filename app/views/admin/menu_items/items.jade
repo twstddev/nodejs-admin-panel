@@ -1,5 +1,5 @@
 each menu_item in menu_items
-	li.bg-info#menu_item_{menu_item.id}
+	li.bg-info( id="menu_item_" + menu_item.id )
 		a(href="/admin/menu_items/" + menu_item.id + "/edit" )
 			i.glyphicon.glyphicon-move.handle
 			|&nbsp;#{menu_item.title}

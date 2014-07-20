@@ -4,7 +4,8 @@ var MenuItem = require( helpers.generate_public_path( "app/include/models/menu_i
  * @brief Displays as list of menu items.
  */
 module.exports.index = function( request, response ) {
-	MenuItem.find( {} )
+	MenuItem.find( { parent : undefined } )
+	.sort( "position" )
 	.exec( function( errors, menu_items ) {
 		return response.render( "admin/menu_items/index", {
 			menu_items : menu_items,
@@ -97,4 +98,58 @@ module.exports.destroy = function( request, response ) {
 		request.flash( "success", "A menu item has been deleted" );
 		return response.redirect( "/admin/menu_items" );
 	} );
+};
+
+/**
+ * @brief Sorts menu items according to the given data.
+ */
+module.exports.sort = function( request, response ) {
+	// ugly callback again
+	var save_single_item = function( item, index, callback ) {
+		item.position = index;
+		item.save( function( error ) {
+			callback();
+		} );
+	};
+
+	var save_sorted_items = function( items, parent ) {
+		_.each( items, function( item, index ) {
+			if ( item.id ) {
+				var current_id = item.id;
+
+				MenuItem.findOne( { _id : current_id } )
+				.exec( function( error, menu_item ) {
+					if ( parent ) {
+						MenuItem.findOne( { _id : parent } )
+						.exec( function( error, parent_item ) {
+							menu_item.parent = parent_item;
+
+							save_single_item( menu_item, index, function() {
+								if ( item.children ) {
+									save_sorted_items( item.children, current_id );
+								}
+							} );
+						} );
+					}
+					else {
+						// why do I have to do this?
+						// Jesus...undefined...
+						menu_item.parent = undefined;
+
+						save_single_item( menu_item, index, function() {
+							if ( item.children ) {
+								save_sorted_items( item.children, current_id );
+							}
+						} );
+					}
+				} );
+			}
+		} );
+	};
+
+	if ( request.body.items ) {
+		save_sorted_items( request.body.items );
+	}
+
+	return response.send( 200, "" );
 };

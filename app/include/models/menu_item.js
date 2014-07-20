@@ -13,6 +13,11 @@ var MenuItemSchema = new mongoose.Schema( {
 	url : {
 		type : String,
 		required : true
+	},
+
+	position : {
+		type : Number,
+		default : 0
 	}
 } );
 
