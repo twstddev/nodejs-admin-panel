@@ -1,0 +1,25 @@
+extends ../layouts/general
+
+block content
+	section.general-page
+		.login-form.panel.panel-primary
+			.panel-heading
+				h3.panel-title Admin Panel
+			.panel-body
+				form( action="/login" method="POST" )
+					if message
+						p.alert.alert-danger #{message}
+					input( type="hidden" name="_csrf" value=csrf_token )
+					.form-group
+						label( for="username" ) Username:
+						.input-group
+							input.form-control( name="username" type="text" placeholder="Enter username" )
+							span.input-group-addon
+								i.glyphicon.glyphicon-user
+					.form-group
+						label( for="password" ) Password:
+						.input-group
+							input.form-control( name="password" type="password" placeholder="Enter password" )
+							span.input-group-addon
+								i.glyphicon.glyphicon-lock
+					button.btn.btn-primary.pull-right( type="submit" ) Log in

@@ -1,4 +1,5 @@
 var admin_router = require( helpers.generate_public_path( "app/modules/admin/router" ) );
+var session_router = require( helpers.generate_public_path( "app/modules/authentication/router" ) );
 
 /**
  * @brief Implements entry point for all application routes.
@@ -11,6 +12,13 @@ var Router = ( function() {
 	 */
 	var registerAdminRoutes = function( application ) {
 		admin_router.registerRoutes( application );
+	};
+
+	/**
+	 * @brief Registers session routes like login, logout.
+	 */
+	var registerSessionRouter = function( application ) {
+		session_router.registerRoutes( application );
 	};
 
 	return {
@@ -26,6 +34,7 @@ var Router = ( function() {
 		 */
 		registerRoutes : function( application ) {
 			registerAdminRoutes( application );
+			registerSessionRouter( application );
 		}
 	}
 } )();
