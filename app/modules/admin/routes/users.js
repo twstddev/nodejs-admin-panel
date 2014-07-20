@@ -8,18 +8,21 @@ var PrivateScope = ( function() {
 		 *
 		 * @param[in] String password is original password
 		 * @param[in] String password_confirmation a password to compare against
-		 * @param[in] Object error is the current error object to update
 		 */
-		validatePasswords : function( password, password_confirmation, error ) {
+		validatePasswords : function( password, password_confirmation ) {
 			if ( password != password_confirmation ) {
-				error = {
-					errors : {
-						password : {
-							message : "Password do not match"
+				return { 
+					error : {
+						errors: {
+							password : {
+								message : "Passwords do not match"
+							}
 						}
 					}
 				};
 			}
+
+			return false;
 		}
 	}
 } )();
@@ -52,24 +55,36 @@ module.exports.new = function( request, response ) {
  * @brief Creates a new user using passed values.
  */
 module.exports.create = function( request, response ) {
+	var prepare_response_with_error = function( user, errors ) {
+		return response.render( "admin/users/new", {
+			user : user,
+			errors : errors
+		} );
+	};
+	
 	var new_user = new User( request.body );
+
+	var validation_result = PrivateScope.validatePasswords( request.body[ "password" ],
+		request.body[ "confirm-password" ] );
+
+	if ( validation_result ) {
+		return prepare_response_with_error( new_user, helpers.process_errors( validation_result.error.errors ) );
+	}
 
 	new_user.save( function( error ) {
 		error = error || {};
 
-		PrivateScope.validatePasswords( request.body[ "password" ],
-			request.body[ "confirm-password" ],
-			error );
+
+		if ( validation_result ) {
+			error.errors = validation_result;
+		}
 
 		if ( _.isEmpty( error ) ) {
 			request.flash( "success", "A user has been created" );
 			return response.redirect( "/admin/users" );
 		}
 
-		return response.render( "admin/users/new", {
-			user : new_user,
-			errors : helpers.process_errors( error.errors )
-		} );
+		return prepare_response_with_error( new_user, helpers.process_errors( error.errors ) );
 	} );
 }
 
@@ -100,6 +115,14 @@ module.exports.edit = function( request, response ) {
  * @brief Update given user.
  */
 module.exports.update = function( request, response ) {
+	var prepare_response_with_error = function( user, errors ) {
+		return response.render( "admin/users/edit", {
+			user : user,
+			errors : errors
+		} );
+	};
+
+
 	User.findOne( { _id : request.params.user } )
 	.exec( function( error, user ) {
 		if ( _.isEmpty( error ) ) {
@@ -108,19 +131,19 @@ module.exports.update = function( request, response ) {
 			user.save( function( error ) {
 				error = error || {}
 
-				PrivateScope.validatePasswords( request.body[ "password" ],
-					request.body[ "confirm-password" ],
-					error );
+				var validation_result = PrivateScope.validatePasswords( request.body[ "password" ],
+					request.body[ "confirm-password" ] );
+
+				if ( validation_result ) {
+					return prepare_response_with_error( user, helpers.process_errors( validation_result.error.errors ) );
+				}
 
 				if ( _.isEmpty( error ) ) {
 					request.flash( "success", "A user has been updated" );
 					return response.redirect( "/admin/users" );
 				}
 				
-				return response.render( "admin/users/edit", {
-					user : user,
-					errors : helpers.process_errors( error.errors )
-				} );
+				return prepare_response_with_error( user, helpers.process_errors( error.errors ) );
 			} );
 		}
 	} );
