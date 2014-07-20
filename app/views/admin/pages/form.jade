@@ -1,0 +1,37 @@
+if errors
+	each error in errors
+		p.alert.alert-danger.alert-dismissable
+			button.close( type="button" data-dismiss="alert" aria-hidden="true" )
+			|#{error}
+
+form.admin-model-form( action=form_url method="POST" )
+	if form_method
+		input( type="hidden" name="_method" value=form_method )
+	.container-fluid
+		.row
+			.col-lg-9
+				.form-group
+					label( for="title" ) Title:
+					input.form-control.input-lg( type="text" value=page.title placeholder="Enter title" name="title" )
+
+				.form-group
+					label( for="slug" ) Slug:
+					input.form-control( type="text" value=page.slug placeholder="Enter slug" name="slug" )
+
+				.form-group
+					label( for="body" ) Body:
+					textarea.form-control( name="body" rows=15 ) #{page.body}
+			aside.col-lg-3
+				.panel.panel-default
+					.panel-heading Additional
+					.panel-body
+						button.btn.btn-success.btn-block( type="submit" )
+							i.glyphicon.glyphicon-floppy-save
+							if form_method
+								|&nbsp;Update
+							else
+								|&nbsp;Save
+						a.btn.btn-warning.btn-block( href="/admin/pages/" )
+							i.glyphicon.glyphicon-remove
+							|&nbsp;Cancel
+
