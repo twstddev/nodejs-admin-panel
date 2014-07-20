@@ -1,0 +1,19 @@
+extends ../../layouts/admin
+
+block content
+	if success.length
+		p.alert.alert-success.alert-dismissable
+			button.close( type="button" data-dismiss="true" aria-hidden="true" ) &times;
+			|#{success}
+	section.admin-panel.panel.panel-default
+		.panel-heading
+			h4.pull-left Menu
+			a.btn.btn-success.pull-left( href="admin/menu_items/new" )
+				i.glyphicon.glyphicon-file
+				|&nbsp;Add new
+
+			.clearfix
+
+		.panel-body
+			ul.nav.nav-pills.nav-stacked.admin-pills.sortable( data-update-url="admin/menu_items/sort" )
+				include items

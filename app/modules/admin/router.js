@@ -2,6 +2,7 @@ require( "express-namespace" );
 require( "express-resource" );
 
 var users_routes = require( "./routes/users" );
+var menu_items_routes = require( "./routes/menu_items" );
 
 /**
  * @brief Implements main admin module.
@@ -20,6 +21,7 @@ var Router = ( function() {
 				} );
 
 				application.resource( "users", users_routes );
+				application.resource( "menu_items", menu_items_routes );
 			} );
 		}
 	}

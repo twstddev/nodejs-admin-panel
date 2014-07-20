@@ -1,0 +1,11 @@
+each menu_item in menu_items
+	li.bg-info#menu_item_{menu_item.id}
+		a(href="/admin/menu_items/edit/" + menu_item.id + "/edit" )
+			i.glyphicon.glyphicon-move.handle
+			|&nbsp;#{menu_item.title}
+		form( action="/admin/menu_items/" + menu_item.id method="POST" )
+			input( type="hidden" name="_method" value="DELETE" )
+			button.btn.btn-xs.btn-danger( type="submit" )
+				i.glyphicon.glyphicon-trash
+				|&nbsp;Delete
+		ul.nav.nav-pills.nav-staced
